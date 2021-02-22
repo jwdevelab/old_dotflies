@@ -1,0 +1,52 @@
+set completion-group-bg         "#1C1B19"
+set completion-group-fg         "#D0BFA1"
+set completion-bg               "#1C1B19"
+set completion-fg               "#D0BFA1"
+set completion-highlight-bg     "#458588"
+set completion-highlight-fg     "#D0BFA1"
+
+set notification-error-bg       "#2C2C29"
+set notification-error-fg       "#D0BFA1"
+set notification-warning-bg     "#3c3836"
+set notification-warning-fg     "#D0BFA1"
+set notification-bg             "#2C2C29"
+set notification-fg             "#D0BFA1"
+
+set index-bg                    "#1C1B19"
+set index-fg                    "#D0BFA1"
+set index-active-bg             "#282828"
+set index-active-fg             "#D0BFA1"
+
+set inputbar-bg                 "#2C2C29"
+set inputbar-fg                 "#D0BFA1"
+
+set statusbar-bg                "#1C1B19"
+set statusbar-fg                "#D0BFA1"
+
+set highlight-color             "#458588"
+set highlight-active-color      "#458588"
+
+set default-bg                  "#1C1B19"
+set default-fg                  "#001512"
+set recolor-lightcolor          "#1C1B19"
+set recolor-darkcolor           "#D0BFA1"
+
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+map u scroll half-up
+map d scroll half-down
+map D toggle_page_mode
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map i recolor
+set recolor                     true
+set smooth-scroll "true"
+set font "open sans regular 12"
+set window-title-home-tilde true
+set statusbar-basename true
+set guioptions shv 
+set selection-clipboard clipboard
+
