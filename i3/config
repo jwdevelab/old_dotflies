@@ -9,20 +9,8 @@
 
 set $mod Mod4
 
-bindsym $mod+u border pixel 1
-bindsym $mod+shift+u border pixel 25
-
-
-# Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:System San Francisco Display 8
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -55,28 +43,19 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+space exec xfce4-terminal
+bindsym $mod+space exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
 
+# bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec "rofi -eh 1 -padding 20 -width 900 -lines 15 -show drun -terminal xfce4-terminal -color-window '#1C1B19, #858076, #5A5751' -color-normal '#1C1B19, #C1BDB5, #1C1B19, #1C1B19, #78746c' -color-active '#78746c, #C1BDB5, #1C1B19, #948365, #FCE8C3' -color-urgent '#1C1B19, #9e9045, #1C1B19, #9e9045, #1C1B19'
-#
 
 bindsym Print exec deepin-screenshot
 # Multi-screen screenshots with scrot
-###bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
-
-# OSX-like area selection screenshots
-###bindsym --release Shift+Print exec scrot -s 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # Area selection
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
 
 # change focus
 bindsym $mod+h focus left
@@ -102,11 +81,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-# bindsym $mod+h split h
-
 # split in vertical orientation
-# bindsym $mod+v split v
 bindsym $mod+q split toggle
 
 # enter fullscreen mode for the focused container
@@ -125,9 +100,6 @@ bindsym $mod+Control+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -171,8 +143,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # assign [class="firefox"] $ws2
 # assign [class="thunar"] $ws4
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -182,14 +152,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit? 
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 40 px or 40 ppt
+        bindsym j resize shrink width 43 px or 43 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym l resize shrink height 10 px or 10 ppt
-        bindsym scedilla resize grow width 40 px or 40 ppt
+        bindsym scedilla resize grow width 43 px or 43 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 1 px or 1 ppt
@@ -212,15 +178,9 @@ for_window [class="^.*"] border pixel 3
 gaps inner 13
 gaps outer -4
 gaps right 8
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
 
-# Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
-# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_gaps on
 smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
@@ -229,47 +189,12 @@ set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 1
-        bindsym minus gaps outer current minus 1
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 10
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
 # Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
                 
          # Take a screenshot by right clicking on the bar
          bindsym --release button3 exec --no-startup-id import /home/jwdev/Pictures/latest-screenshot.png	
-
          workspace_min_width 10	
-         status_command ~/.i3/bar.sh
          position top
          mode dock
          hidden_state hide 
@@ -288,7 +213,7 @@ bar {
 # Startup
 # exec_always feh --bg-scale ~/Pictures/Wallpaper.jpg
 exec --no-startup-id nitrogen --restore   
-exec xfce4-terminal
+exec st
 
 # Keybindings
 bindsym $mod+shift+z exec firefox
@@ -302,5 +227,6 @@ bindsym $mod+shift+n exec brightness.sh - VGA1
 bindsym $mod+shift+m exec brightness.sh + VGA1
 
 # KDEConnect
+# exec --no-startup-id picom --config .config/picom/picom.conf 
 exec --no-startup-id /usr/lib/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
