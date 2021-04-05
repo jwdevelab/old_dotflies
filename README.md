@@ -1,7 +1,3 @@
-# Demo
+# Dotfiles
 
 Some description!
-
-## Subheader
-
-Learn Git.
