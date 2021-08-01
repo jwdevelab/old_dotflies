@@ -1,3 +1,3 @@
 # Dotfiles
 
-Some description!
+Just dotfiles
